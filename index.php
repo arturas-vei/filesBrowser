@@ -1,3 +1,25 @@
+<?php declare(strict_types=1);?>
+
+<?php //login logic
+    session_start();
+    $mesage = '';
+    if (isset($_POST['login']) && !empty($_POST['username']) && !empty($_POST['password'])) {	
+        if ($_POST['username'] == 'Arturas' && $_POST['password'] == '1234') {
+            $_SESSION['logged_in'] = true;
+            $_SESSION['username'] = 'Arturas';
+        } else {
+            $mesage = 'Wrong username or password';
+        }
+    }
+
+    //logout logic
+    if(isset($_POST['logout'])) {
+        session_start();
+        unset($_SESSION['username']);
+        unset($_SESSION['password']);
+        unset($_SESSION['logged_in']);
+    }
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
